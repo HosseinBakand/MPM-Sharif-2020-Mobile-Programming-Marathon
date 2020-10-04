@@ -41,6 +41,8 @@ import uk.co.appoly.arcorelocation.LocationScene
 import java.lang.ref.WeakReference
 import java.util.concurrent.CompletableFuture
 
+const val ANCHOR_REFRESH_INTERVAL_IN_MILLIS = 2000
+
 class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrapper> {
 
     private var arCoreInstallRequested = false
@@ -57,7 +59,7 @@ class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrap
         arSceneView.resume()
     }
 
-    lateinit var foursquareAPI: FoursquareAPI
+    private lateinit var foursquareAPI: FoursquareAPI
     private var apiQueryParams = mutableMapOf<String, String>()
 
     private var userGeolocation = Geolocation.EMPTY_GEOLOCATION
@@ -141,7 +143,7 @@ class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrap
             locationScene!!.setMinimalRefreshing(false)
             locationScene!!.setOffsetOverlapping(true)
             locationScene!!.setRemoveOverlapping(true)
-            locationScene!!.anchorRefreshInterval = 1000
+            locationScene!!.anchorRefreshInterval = ANCHOR_REFRESH_INTERVAL_IN_MILLIS
         }
 
         try {

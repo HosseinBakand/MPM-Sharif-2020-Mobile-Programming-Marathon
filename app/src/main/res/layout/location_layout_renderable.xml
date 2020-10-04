@@ -1,9 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pinContainer"
     android:layout_width="150dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/rectangle_resized"
-    android:visibility="visible">
+    android:background="@drawable/rectangle_resized">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +15,8 @@
             android:id="@+id/categoryIcon"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            tools:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -24,7 +25,7 @@
             android:layout_toEndOf="@id/categoryIcon"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -33,9 +34,10 @@
                 android:gravity="center_vertical"
                 android:textColor="#FFFF"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="venue name" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/distance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,7 +46,8 @@
                 android:layout_marginEnd="2dp"
                 android:paddingBottom="5dp"
                 android:textColor="#FFFF"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                tools:text="6.6 km" />
         </LinearLayout>
 
     </RelativeLayout>
