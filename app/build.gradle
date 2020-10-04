@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'com.google.ar.sceneform.plugin'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -66,10 +66,22 @@ dependencies {
     implementation "com.intuit.sdp:sdp-android:1.0.6"
 
 }
-
-apply plugin: 'com.google.ar.sceneform.plugin'
-
 sceneform.asset('sampledata/augmented_video_model.obj',
         'sampledata/augmented_video_material.mat',
         'sampledata/augmented_video_model.sfa',
         'src/main/res/raw/augmented_video_model')
+
+sceneform.asset('sampledata/pizza/pizza.obj',
+        'default',
+        'sampledata/pizza/pizza.sfa',
+        'src/main/assets/pizza')
+
+sceneform.asset('sampledata/burger/Hamburger.obj',
+        'default',
+        'sampledata/burger/Hamburger.sfa',
+        'src/main/assets/hamburger')
+
+sceneform.asset('sampledata/soup/Ramen.obj',
+        'default',
+        'sampledata/soup/Ramen.sfa',
+        'src/main/assets/Ramen')
