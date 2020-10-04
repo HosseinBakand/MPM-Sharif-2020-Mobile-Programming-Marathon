@@ -38,10 +38,6 @@
 
         </activity>
 
-
-        <meta-data
-            android:name="com.google.ar.core"
-            android:value="optional" />
     </application>
 
 
