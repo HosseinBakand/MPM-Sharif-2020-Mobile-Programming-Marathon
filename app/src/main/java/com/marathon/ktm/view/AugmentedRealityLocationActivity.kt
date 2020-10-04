@@ -1,6 +1,5 @@
 package com.marathon.ktm.view
 
-import android.graphics.Color
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
@@ -40,7 +39,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import uk.co.appoly.arcorelocation.LocationMarker
 import uk.co.appoly.arcorelocation.LocationScene
 import java.lang.ref.WeakReference
-import java.util.*
 import java.util.concurrent.CompletableFuture
 
 const val ANCHOR_REFRESH_INTERVAL_IN_MILLIS = 5000
@@ -299,7 +297,6 @@ class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrap
         venueName.text = venue.name
         markerLayoutContainer.visibility = View.GONE
         nodeLayout.setOnTouchListener { v, _ ->
-            Toast.makeText(this, venue.address, Toast.LENGTH_SHORT).show()
             v.performClick()
             false
         }
