@@ -7,5 +7,11 @@
     <string name="camera_and_location_permission_request">Location and Camera permissions are needed to use this
         feature
     </string>
-    <string name="loading_message">Loading your current location…</string>
+    <string name="loading_message">در حال یافتن موقعیت مکانی شما</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 </resources>
