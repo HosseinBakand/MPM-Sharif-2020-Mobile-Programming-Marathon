@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/_36sdp">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/bottom_sheet_title_label"
@@ -90,5 +91,27 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@android:drawable/ic_media_play"
         tools:text="title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_36sdp"
+        android:text="مسیریابی"
+        android:fontFamily="@font/iranian_sans"
+        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_address_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_reserve"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_reserve"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_36sdp"
+        android:text="رزرو"
+        android:fontFamily="@font/iranian_sans"
+        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_address_label"
+        app:layout_constraintStart_toEndOf="@id/btn_navigation"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

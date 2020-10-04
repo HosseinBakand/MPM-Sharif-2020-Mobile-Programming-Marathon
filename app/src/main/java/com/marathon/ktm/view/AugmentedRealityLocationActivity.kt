@@ -42,6 +42,8 @@ import java.lang.ref.WeakReference
 import java.util.concurrent.CompletableFuture
 
 const val ANCHOR_REFRESH_INTERVAL_IN_MILLIS = 5000
+var deviceLatitude: Double?=null
+var deviceLongitude: Double?=null
 
 class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrapper> {
 
@@ -304,6 +306,10 @@ class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrap
                         putString(VENUE_DETAIL_TITLE_KEY, venue.name)
                         putString(VENUE_DETAIL_ADDRESS_KEY, venue.address)
                         putString(VENUE_DETAIL_ADDRESS_ICON_URL, venue.iconURL)
+                        putString("dlat",venue.lat)
+                        putString("dlng",venue.long)
+                        putString("slat", deviceLatitude.toString())
+                        putString("slng", deviceLongitude.toString())
                     }
                 ).apply {
                     show(it, tag)
@@ -358,14 +364,13 @@ class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrap
             activityWeakReference.get()!!.loadingDialog.show()
         }
 
+
         override fun doInBackground(vararg p0: LocationScene): List<Double> {
-            var deviceLatitude: Double?
-            var deviceLongitude: Double?
             do {
                 deviceLatitude = p0[0].deviceLocation?.currentBestLocation?.latitude
                 deviceLongitude = p0[0].deviceLocation?.currentBestLocation?.longitude
             } while (deviceLatitude == null || deviceLongitude == null)
-            return listOf(deviceLatitude, deviceLongitude)
+            return listOf(deviceLatitude!!, deviceLongitude!!)
         }
 
         override fun onPostExecute(geolocation: List<Double>) {
