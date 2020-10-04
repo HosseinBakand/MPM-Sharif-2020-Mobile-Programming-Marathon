@@ -2,6 +2,7 @@ package com.marathon.ktm.api
 
 import com.marathon.ktm.model.VenueWrapper
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
@@ -12,5 +13,5 @@ interface FoursquareAPI {
     }
 
     @GET("search")
-    fun searchVenues(@QueryMap params: Map<String, String>): Call<VenueWrapper>
+    suspend fun searchVenues(@QueryMap params: Map<String, String>): Response<VenueWrapper>
 }

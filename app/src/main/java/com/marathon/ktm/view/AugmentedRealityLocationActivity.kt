@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.ar.core.TrackingState
@@ -29,11 +30,14 @@ import com.marathon.ktm.utils.AugmentedRealityLocationUtils
 import com.marathon.ktm.utils.AugmentedRealityLocationUtils.INITIAL_MARKER_SCALE_MODIFIER
 import com.marathon.ktm.utils.AugmentedRealityLocationUtils.INVALID_MARKER_SCALE_MODIFIER
 import com.marathon.ktm.utils.PermissionUtils
+import com.marathon.ktm.utils.RemoteResult
+import com.marathon.ktm.utils.safeApiCall
 import kotlinx.android.synthetic.main.activity_augmented_reality_location.*
 import kotlinx.android.synthetic.main.location_layout_renderable.view.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import uk.co.appoly.arcorelocation.LocationMarker
@@ -43,7 +47,7 @@ import java.util.concurrent.CompletableFuture
 
 const val ANCHOR_REFRESH_INTERVAL_IN_MILLIS = 2000
 
-class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrapper> {
+class AugmentedRealityLocationActivity : AppCompatActivity() {
 
     private var arCoreInstallRequested = false
 
@@ -165,20 +169,31 @@ class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrap
         loadingDialog.dismiss()
         userGeolocation = Geolocation(deviceLatitude.toString(), deviceLongitude.toString())
         apiQueryParams["ll"] = "$deviceLatitude,$deviceLongitude"
-        foursquareAPI.searchVenues(apiQueryParams).enqueue(this)
-    }
+        lifecycleScope.launch(Dispatchers.IO) {
+            when (val response = safeApiCall(Dispatchers.IO) {
+                foursquareAPI.searchVenues(apiQueryParams)
+            }) {
+                is RemoteResult.Success -> {
+                    val venueWrapper = response.data.body() ?: VenueWrapper(listOf())
+                    venuesSet.clear()
+                    venuesSet.addAll(venueWrapper.venueList)
+                    areAllMarkersLoaded = false
+                    locationScene!!.clearMarkers()
+                    renderVenues()
+                }
+                is RemoteResult.Error -> {
+                    Toast.makeText(
+                        this@AugmentedRealityLocationActivity,
+                        response.exception.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                else -> {
+                    //LOADING
+                }
+            }
 
-    override fun onResponse(call: Call<VenueWrapper>, response: Response<VenueWrapper>) {
-        val venueWrapper = response.body() ?: VenueWrapper(listOf())
-        venuesSet.clear()
-        venuesSet.addAll(venueWrapper.venueList)
-        areAllMarkersLoaded = false
-        locationScene!!.clearMarkers()
-        renderVenues()
-    }
-
-    override fun onFailure(call: Call<VenueWrapper>, t: Throwable) {
-        Toast.makeText(this, t.message, Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun renderVenues() {
@@ -205,7 +220,8 @@ class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrap
                             venue.lat.toDouble(),
                             setVenueNode(venue, completableFutureViewRenderable)
                         )
-                        arHandler.postDelayed({
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            delay(200)
                             attachMarkerToScene(
                                 venueMarker,
                                 completableFutureViewRenderable.get().view
@@ -213,8 +229,7 @@ class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrap
                             if (venuesSet.indexOf(venue) == venuesSet.size - 1) {
                                 areAllMarkersLoaded = true
                             }
-                        }, 200)
-
+                        }
                     } catch (ex: Exception) {
                         //                        showToast(getString(R.string.generic_error_msg))
                     }
@@ -250,7 +265,7 @@ class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrap
             locationScene?.mLocationMarkers?.add(locationMarker)
             locationMarker.anchorNode?.isEnabled = true
 
-            arHandler.post {
+            lifecycleScope.launch(Dispatchers.Main) {
                 locationScene?.refreshAnchors()
                 renderableLayout.pinContainer.visibility = View.VISIBLE
             }
