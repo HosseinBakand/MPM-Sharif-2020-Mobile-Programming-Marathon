@@ -27,6 +27,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -57,3 +60,10 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
 
 }
+
+apply plugin: 'com.google.ar.sceneform.plugin'
+
+sceneform.asset('sampledata/augmented_video_model.obj',
+        'sampledata/augmented_video_material.mat',
+        'sampledata/augmented_video_model.sfa',
+        'src/main/res/raw/augmented_video_model')
