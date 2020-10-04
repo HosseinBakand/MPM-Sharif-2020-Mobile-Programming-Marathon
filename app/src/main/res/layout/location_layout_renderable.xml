@@ -1,54 +1,53 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/pinContainer"
-    android:layout_width="150dp"
+    android:background="@drawable/corner_radius_background"
+    android:layout_width="@dimen/_170sdp"
     android:layout_height="wrap_content"
-    android:background="@drawable/rectangle_resized">
+    android:paddingEnd="@dimen/_8sdp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+
+    <ImageView
+        android:id="@+id/categoryIcon"
+        android:layout_width="@dimen/_48sdp"
+        android:layout_height="@dimen/_48sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_centerVertical="true"
+        tools:src="@drawable/ic_launcher_background" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="13dp">
+        app:layout_constraintStart_toEndOf="@id/categoryIcon"
+        app:layout_constraintTop_toTopOf="@id/categoryIcon"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:ellipsize="end"
+        android:textColor="#FFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="venue name" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:layout_constraintStart_toEndOf="@id/categoryIcon"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        android:textColor="#FFFF"
+        android:textSize="13sp"
+        tools:text="6.6 km" />
 
-        <ImageView
-            android:id="@+id/categoryIcon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_centerVertical="true"
-            tools:src="@drawable/ic_launcher_background" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/categoryIcon"
-            android:orientation="vertical">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:gravity="center_vertical"
-                android:textColor="#FFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:text="venue name" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/distance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:paddingBottom="5dp"
-                android:textColor="#FFFF"
-                android:textSize="13sp"
-                tools:text="6.6 km" />
-        </LinearLayout>
-
-    </RelativeLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

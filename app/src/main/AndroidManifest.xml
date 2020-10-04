@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.marathon.ktm">
 
@@ -15,21 +16,22 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".view.AugmentedRealityLocationActivity"
-            android:theme="@style/AppTheme">
-
+            android:name=".view.HomePageActivity"
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+        </activity>
+        <activity
+            android:name=".view.AugmentedRealityLocationActivity"
+            android:theme="@style/AppTheme">
         </activity>
 
         <meta-data
             android:name="com.google.ar.core"
             android:value="optional" />
-
     </application>
-
 
 </manifest>
