@@ -23,7 +23,7 @@ class HomePageActivity : AppCompatActivity() {
             this@HomePageActivity.startActivity(myIntent)
         }
         btn_show_products.setOnClickListener {
-
+            MenuActivity.newInstance(this)
         }
     }
 }

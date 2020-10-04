@@ -34,9 +34,6 @@
             android:name=".view.AugmentedRealityLocationActivity"
             android:theme="@style/AppTheme">
         </activity>
-
-        <meta-data android:name="com.google.ar.core" android:value="required"/>
-
         <activity android:name=".banner.BannerActivity">
 
         </activity>
