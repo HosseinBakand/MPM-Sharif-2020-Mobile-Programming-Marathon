@@ -298,6 +298,17 @@ class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrap
         markerLayoutContainer.visibility = View.GONE
         nodeLayout.setOnTouchListener { v, _ ->
             v.performClick()
+            supportFragmentManager.let {
+                VenueDetailBottomSheet.newInstance(
+                    Bundle().apply {
+                        putString(VENUE_DETAIL_TITLE_KEY, venue.name)
+                        putString(VENUE_DETAIL_ADDRESS_KEY, venue.address)
+                        putString(VENUE_DETAIL_ADDRESS_ICON_URL, venue.iconURL)
+                    }
+                ).apply {
+                    show(it, tag)
+                }
+            }
             false
         }
 
