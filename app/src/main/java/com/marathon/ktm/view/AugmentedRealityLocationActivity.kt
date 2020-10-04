@@ -1,5 +1,6 @@
 package com.marathon.ktm.view
 
+import android.graphics.Color
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
@@ -39,9 +40,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import uk.co.appoly.arcorelocation.LocationMarker
 import uk.co.appoly.arcorelocation.LocationScene
 import java.lang.ref.WeakReference
+import java.util.*
 import java.util.concurrent.CompletableFuture
 
-const val ANCHOR_REFRESH_INTERVAL_IN_MILLIS = 2000
+const val ANCHOR_REFRESH_INTERVAL_IN_MILLIS = 5000
 
 class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrapper> {
 
@@ -302,6 +304,9 @@ class AugmentedRealityLocationActivity : AppCompatActivity(), Callback<VenueWrap
             false
         }
 
+//        val rnd = Random()
+//        val color: Int = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+//        markerLayoutContainer.setBackgroundColor(color)
         Glide.with(this)
             .load(venue.iconURL)
             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)

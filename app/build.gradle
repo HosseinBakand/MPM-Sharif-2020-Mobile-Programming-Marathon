@@ -59,6 +59,12 @@ dependencies {
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
 
+    implementation "androidx.constraintlayout:constraintlayout:2.0.0"
+
+    // size versions
+    implementation "com.intuit.ssp:ssp-android:1.0.6"
+    implementation "com.intuit.sdp:sdp-android:1.0.6"
+
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'

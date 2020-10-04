@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_background">
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_fine_near_places"
+        android:layout_width="0dp"
+        android:background="@drawable/btn_corner_radius_background"
+        android:layout_height="@dimen/_100sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_96sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="یافتن مکان های اطراف من"
+        android:fontFamily="@font/iranian_sans"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_advertisement_banner"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_100sdp"
+        android:background="@drawable/btn_corner_radius_background"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:text="مشاهده بنر تبلیغاتی"
+        android:fontFamily="@font/iranian_sans"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_fine_near_places" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_show_products"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_100sdp"
+        android:background="@drawable/btn_corner_radius_background"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:text="نمایش محصولات"
+        android:fontFamily="@font/iranian_sans"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_advertisement_banner" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_app_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/anton_regular"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:text="KTM"
+        android:textStyle="italic"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:textSize="@dimen/_40ssp"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_maraton"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_maraton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ماراتون برنامه نویسی شریف"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/iranian_sans"
+        android:layout_marginBottom="@dimen/_16sdp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
