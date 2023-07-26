@@ -1,6 +1,6 @@
 # MPM-Sharif-2020 Mobile Programming Marathon Project
 
-![MPM-Sharif-2020 Logo](http://mpm.sharif.ir/wp-content/uploads/2020/11/%D9%88%DB%8C%D8%AF%D8%A6%D9%88-%D9%88%D8%A7%D9%84-1024x597.jpg)
+![MPM-Sharif-2020 Logo](http://mpm.sharif.ir/wp-content/uploads/2021/08/logo.jpg)
 
 ## Project Overview
 
