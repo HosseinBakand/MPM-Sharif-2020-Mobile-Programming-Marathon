@@ -16,7 +16,7 @@ The first section of our project involved creating an innovative application tha
 
 #### Video Showcase
 
-[![Video in Camera Billboard](videos/Banner_AR.jpg)](videos/1.gif)
+![](videos/1.gif)
 
 ### 2. Food 3D Model in Camera
 
@@ -24,7 +24,7 @@ The second section focused on enriching the dining experience for users by utili
 
 #### Video Showcase
 
-[![Food 3D Model in Camera](videos/Food_AR.jpg)](videos/3.gif)
+![](videos/3.gif)
 
 ### 3. AR-based Nearby Restaurant Finder
 
@@ -32,7 +32,7 @@ In the third section, we developed an AR-based nearby restaurant finder. Using l
 
 #### Video Showcase
 
-[![AR-based Nearby Restaurant Finder](videos/Direction_AR.jpg)](videos/2.gif)
+![](videos/2.gif)
 
 ## Features
 
